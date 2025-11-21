@@ -106,7 +106,6 @@ def build_binary_tree_from_list(nums: List[Optional[int]]) -> Optional[TreeNode]
             right_val = nums[i]
             if right_val is not None:
                 parent.right = TreeNode(right_val)
-                # נוסיף גם אותו לתור
                 queue.append(parent.right)
             i += 1
 
