@@ -17,27 +17,20 @@ class TreeNode:
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
-        def dfs(node: TreeNode, mini:int, maxi:int )-> bool:
+        def dfs(node: TreeNode, mini, maxi )-> bool:
             if node is None:
                 return True
-            if node.left is None and node.right is None:
-                return True
 
-            if node.left.val >= node.val or node.right.val <= node.val:
+            if not (mini <= node.val <= maxi):
                 return False
 
-            if node.left:
-                return dfs(node.left,mini,node.val-1)
-            if node.right:
-                return dfs(node.right,node.val+1, maxi)
+            return dfs(node.left,mini,node.val-1) and dfs(node.right,node.val+1, maxi)
 
-            return False
-
-        return dfs(root, int(NEG_INF), int(POS_INF))
+        return dfs(root, NEG_INF, POS_INF)
 
 
-lst1 = [2,1,1,3,None,1,5]
-sol = Solution
+lst1 = [2,1,3]
+sol = Solution()
 root1 = playground.build_binary_tree_from_list(lst1)
 res = sol.isValidBST(root1)
 print(res)
