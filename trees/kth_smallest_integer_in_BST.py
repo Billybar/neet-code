@@ -1,5 +1,4 @@
-from typing import Optional, List
-import playground
+from typing import Optional
 
 NEG_INF = float('-inf')
 POS_INF = float('inf')
